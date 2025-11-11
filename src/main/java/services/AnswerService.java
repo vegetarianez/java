@@ -1,34 +1,47 @@
 package services;
-import lombok.Data;
 import models.AnswerModel;
 import repositories.AnswerRepository;
 
 import java.util.List;
+import java.util.Optional;
 
-@Data
-public class AnswerService {
-    private final AnswerRepository answerRepository;
+public class AnswerService implements ServiceInterface<AnswerModel>{
+    private final AnswerRepository repository;
 
-    public AnswerModel createAnswer(int questionId, String text, int indexNumber) {
-        if (indexNumber < 0 || questionId < 0) {
-            throw new IllegalArgumentException("индексы не могут быть отрицательными");
-        }
-        return answerRepository.addAnswer(new AnswerModel(0, questionId, text, indexNumber));
+    public AnswerService(AnswerRepository repository) {
+        this.repository = repository;
     }
 
-    public List<AnswerModel> getAllAnswers() {
-        return answerRepository.getAnswers();
+
+
+    @Override
+    public List<AnswerModel> getAll() {
+        return repository.getAll();
     }
 
-    public AnswerModel getAnswerById(int id) {
-        return answerRepository.getAnswerModelById(id);
+    @Override
+    public void deleteById(int id) {
+        repository.deleteById(id);
     }
 
-    public boolean deleteAnswer(int id) {
-        return answerRepository.deleteAnswerById(id);
+
+    @Override
+    public void create(AnswerModel entity) {
+        repository.create(entity);
     }
 
-    public AnswerModel updateAnswer(int id, int questionId, String text, int indexNumber) {
-        return answerRepository.updateAnswer(new AnswerModel(id, questionId, text, indexNumber));
+    @Override
+    public Optional<AnswerModel> getById(int id) {
+        return repository.getById(id);
     }
+
+
+    //    public AnswerModel create(int questionId, String text, int indexNumber) {
+//        if (indexNumber < 0 || questionId < 0) {
+//            throw new IllegalArgumentException("индексы не могут быть отрицательными");
+//        }
+//        return answerRepository.addAnswer(new AnswerModel((int) answerRepository.getAnswers().stream().count() + 1, questionId, text, indexNumber));
+//    }
+
+
 }

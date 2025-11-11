@@ -1,26 +1,28 @@
 package models;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+
+
 public class QuestionModel {
     private Integer id;
-    @Setter
     private Integer surveyId;
-    @Setter
     private String text;
-    @Setter
     private String type;
-    @Setter
     private Integer indexNumber;
+
+    public QuestionModel(Integer id, Integer surveyId, String text, String type, Integer indexNumber) {
+        this.id = id;
+        this.surveyId = surveyId;
+        this.text = text;
+        this.type = type;
+        this.indexNumber = indexNumber;
+    }
 
     @Override
     public String toString() {
-        return "id="+id.toString()+"survey id="+surveyId+"text:"+text+"type"+type+"index_number"+indexNumber;
+        return " id="+id.toString()+" survey id="+surveyId+" text:"+text+" type"+type+" index_number"+indexNumber;
     }
 
+    public int getId() {
+        return id;
+    }
 }

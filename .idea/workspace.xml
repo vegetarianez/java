@@ -5,36 +5,62 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="77c30501-dd32-448e-9e6a-18fc4e185a69" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AnonimQuestions.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/AnswerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/QuestionController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/SessionController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/SurveyController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/UnifiedController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/UserAnswerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/AnswerModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/QuestionModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/SessionModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/SurveyModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/UserAnswerModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/repositories/AnswerRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/repositories/QuestionRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/repositories/SessionRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/repositories/SurveyRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/repositories/UserAnswerRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/AnswerService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/QuestionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/SessionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/SurveyService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/UserAnswerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/ControllerInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/database/Database.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/database/tables/AnswerTable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/database/tables/QuestionTable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/database/tables/SessionTable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/database/tables/SurveyTable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/database/tables/UserAnswerTable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repositories/RepositoryInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/services/ServiceInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/AnswerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/AnswerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/QuestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/QuestionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/SessionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/SessionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/SurveyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/SurveyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/UnifiedController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/UserAnswerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/UserAnswerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/AnswerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/AnswerModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/QuestionModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/QuestionModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/SessionModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/SessionModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/SurveyModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/SurveyModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/UserAnswerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/UserAnswerModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/AnswerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/AnswerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/QuestionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/QuestionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/SessionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/SessionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/SurveyRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/SurveyRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/UserAnswerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/UserAnswerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/AnswerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/AnswerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/QuestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/QuestionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/SessionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/SessionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/SurveyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/SurveyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/UserAnswerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/UserAnswerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/AnswerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/AnswerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/QuestionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/QuestionController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/SessionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/SessionController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/SurveyController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/SurveyController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/UnifiedController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/UserAnswerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/UserAnswerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/AnswerModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/AnswerModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/QuestionModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/QuestionModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/SessionModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/SessionModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/SurveyModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/SurveyModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/UserAnswerModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/UserAnswerModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/repositories/AnswerRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repositories/AnswerRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/repositories/QuestionRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repositories/QuestionRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/repositories/SessionRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repositories/SessionRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/repositories/SurveyRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repositories/SurveyRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/repositories/UserAnswerRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repositories/UserAnswerRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/services/AnswerService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/AnswerService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/services/QuestionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/QuestionService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/services/SessionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/SessionService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/services/SurveyService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/SurveyService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/services/UserAnswerService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/UserAnswerService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +70,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -55,7 +82,9 @@
   &quot;associatedIndex&quot;: 7
 }</component>
   <component name="ProjectId" id="33l326lQghPUzNgl9OcJXbehahl" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -69,6 +98,11 @@
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />

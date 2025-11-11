@@ -1,54 +1,88 @@
 package repositories;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.Data;
+
+import database.tables.SurveyTable;
 import models.SurveyModel;
 
 import java.util.ArrayList;
-import java.util.Objects;
+import java.util.List;
+import java.util.Optional;
 
-@Data
-@AllArgsConstructor
-public class SurveyRepository {
-    private ArrayList<SurveyModel> surveys = new ArrayList<>();
-    private Integer increment = 1;
+public class SurveyRepository implements RepositoryInterface<SurveyModel>{
+    private final SurveyTable table;
 
-    public SurveyRepository() {
+    public SurveyRepository(SurveyTable table) {
+        this.table = table;
     }
 
-    public SurveyModel getSurveyModelById(Integer id) {
-        for (SurveyModel survey : surveys) {
-            if (Objects.equals(survey.getId(), id)) {
-                return survey;
-            }
-        }
-        return null;
+    @Override
+    public void create(SurveyModel entity) {
+        table.getModels().put(entity.getId(), entity);
     }
 
-    public SurveyModel addSurvey(SurveyModel surveyModel) {
-        SurveyModel survey = new SurveyModel(increment++, surveyModel.getSessionId(), surveyModel.getName(), surveyModel.getDateAndTimeOfCreation(), surveyModel.getDescription());
-        surveys.add(survey);
-        return survey;
+    @Override
+    public Optional<SurveyModel> getById(int id) {
+        return Optional.ofNullable(table.getModels().get(id));
     }
 
-    public boolean deleteSurveyById(Integer id) {
-        for (SurveyModel surveyModel : surveys) {
-            if (Objects.equals(surveyModel.getId(), id)) {
-                surveys.remove(surveyModel);
-                return true;
-            }
-        }
-        return false;
+    @Override
+    public List<SurveyModel> getAll() {
+        return new ArrayList<>(table.getModels().values());
     }
 
-    public SurveyModel updateSurvey(SurveyModel surveyModel) {
-        for (SurveyModel survey : surveys) {
-            if (survey.getId().equals(surveyModel.getId())) {
-                surveys.remove(survey);
-                surveys.add(surveyModel);
-                return surveyModel;
-            }
-        }
-        return null;
+    @Override
+    public void deleteById(int id) {
+        table.getModels().remove(id);
     }
+
+
+
+
+
+
+
+
+
+//    private ArrayList<SurveyModel> surveys = new ArrayList<>();
+//    private Integer increment = 1;
+//
+//    public SurveyRepository() {
+//    }
+//
+//
+//
+//    public SurveyModel getSurveyModelById(Integer id) {
+//        for (SurveyModel survey : surveys) {
+//            if (Objects.equals(survey.getId(), id)) {
+//                return survey;
+//            }
+//        }
+//        return null;
+//    }
+//
+//    public SurveyModel addSurvey(SurveyModel surveyModel) {
+//        SurveyModel survey = new SurveyModel(increment++, surveyModel.getSessionId(), surveyModel.getName(), surveyModel.getDateAndTimeOfCreation(), surveyModel.getDescription());
+//        surveys.add(survey);
+//        return survey;
+//    }
+//
+//    public boolean deleteSurveyById(Integer id) {
+//        for (SurveyModel surveyModel : surveys) {
+//            if (Objects.equals(surveyModel.getId(), id)) {
+//                surveys.remove(surveyModel);
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
+//
+//    public SurveyModel updateSurvey(SurveyModel surveyModel) {
+//        for (SurveyModel survey : surveys) {
+//            if (survey.getId().equals(surveyModel.getId())) {
+//                surveys.remove(survey);
+//                surveys.add(surveyModel);
+//                return surveyModel;
+//            }
+//        }
+//        return null;
+//    }
 }
