@@ -23,8 +23,13 @@ public class SurveyController implements ControllerInterface<SurveyModel>{
 
 
     @Override
-    public void create(SurveyModel answer) {
-        service.create(answer);
+    public void create(SurveyModel survey) {
+        service.create(survey);
+    }
+
+    @Override
+    public void update(SurveyModel survey) {
+        service.update(survey);
     }
 
     @Override

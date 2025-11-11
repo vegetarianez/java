@@ -1,7 +1,6 @@
 
 import controllers.*;
 import database.Database;
-import database.tables.UserAnswerTable;
 import models.*;
 import repositories.*;
 import services.*;
@@ -95,23 +94,26 @@ public class Main {
                                 int id = scanner.nextInt();
                                 scanner.nextLine();
 
-                                System.out.println("Введите ID сессии");
-                                int sessionId = scanner.nextInt();
-                                scanner.nextLine();
+                                if (surveyController.getById(id).isPresent()) {
+                                    System.out.println("Введите ID сессии");
+                                    int sessionId = scanner.nextInt();
+                                    scanner.nextLine();
 
-                                System.out.println("Введите название опроса");
-                                String name = scanner.nextLine();
+                                    System.out.println("Введите название опроса");
+                                    String name = scanner.nextLine();
 
-                                System.out.println("Введите дату и время создания");
-                                String dateAndTimeOfCreation = scanner.nextLine();
+                                    System.out.println("Введите дату и время создания");
+                                    String dateAndTimeOfCreation = scanner.nextLine();
 
-                                System.out.println("Введите описание");
-                                String description = scanner.nextLine();
+                                    System.out.println("Введите описание");
+                                    String description = scanner.nextLine();
 
-                                SurveyModel surveyModel = new SurveyModel(id, sessionId, name, LocalDateTime.parse(dateAndTimeOfCreation), description);
-                                surveyController.deleteById(id);
+                                    SurveyModel surveyModel = new SurveyModel(id, sessionId, name, LocalDateTime.parse(dateAndTimeOfCreation), description);
 
-                                surveyController.create(surveyModel);
+                                    surveyController.update(surveyModel);
+                                } else {
+                                    System.out.println("Записи с таким ID не существует");
+                                }
                             }
                             case 5 -> {
                                 running = false;
@@ -180,24 +182,29 @@ public class Main {
                                 int id = scanner.nextInt();
                                 scanner.nextLine();
 
-                                System.out.println("Введите ID опроса");
-                                int surveyId = scanner.nextInt();
-                                scanner.nextLine();
+                                if (questionController.getById(id).isPresent()) {
+                                    System.out.println("Введите ID опроса");
+                                    int surveyId = scanner.nextInt();
+                                    scanner.nextLine();
 
-                                System.out.println("Введите текст вопроса");
-                                String text = scanner.nextLine();
+                                    System.out.println("Введите текст вопроса");
+                                    String text = scanner.nextLine();
 
-                                System.out.println("Введите тип вопроса");
-                                String type = scanner.nextLine();
+                                    System.out.println("Введите тип вопроса");
+                                    String type = scanner.nextLine();
 
-                                System.out.println("Введите порядковый номер в опросе");
-                                int indexNumber = scanner.nextInt();
-                                scanner.nextLine();
+                                    System.out.println("Введите порядковый номер в опросе");
+                                    int indexNumber = scanner.nextInt();
+                                    scanner.nextLine();
 
-                                QuestionModel questionModel = new QuestionModel(id, surveyId, text, type, indexNumber);
-                                questionController.deleteById(id);
+                                    QuestionModel questionModel = new QuestionModel(id, surveyId, text, type, indexNumber);
 
-                                questionController.create(questionModel);
+
+                                    questionController.update(questionModel);
+                                } else {
+                                    System.out.println("Записи с таким ID не существует");
+                                }
+
                             }
                             case 5 -> {
                                 running = false;
@@ -265,21 +272,27 @@ public class Main {
                                 int id = scanner.nextInt();
                                 scanner.nextLine();
 
-                                System.out.println("Введите ID вопроса");
-                                int questionId = scanner.nextInt();
-                                scanner.nextLine();
+                                if (answerController.getById(id).isPresent()) {
+                                    System.out.println("Введите ID вопроса");
+                                    int questionId = scanner.nextInt();
+                                    scanner.nextLine();
 
-                                System.out.println("Введите текст ответа");
-                                String text = scanner.nextLine();
+                                    System.out.println("Введите текст ответа");
+                                    String text = scanner.nextLine();
 
-                                System.out.println("Введите порядковый номер");
-                                int indexNumber = scanner.nextInt();
-                                scanner.nextLine();
+                                    System.out.println("Введите порядковый номер");
+                                    int indexNumber = scanner.nextInt();
+                                    scanner.nextLine();
 
-                                AnswerModel answerModel = new AnswerModel(id, questionId, text, indexNumber);
-                                answerController.deleteById(id);
+                                    AnswerModel answerModel = new AnswerModel(id, questionId, text, indexNumber);
 
-                                answerController.create(answerModel);
+
+                                    answerController.update(answerModel);
+                                } else {
+                                    System.out.println("Записи с таким ID не существует");
+                                }
+
+
                             }
                             case 5 -> {
                                 running = false;
@@ -335,13 +348,17 @@ public class Main {
                                 int id = scanner.nextInt();
                                 scanner.nextLine();
 
-                                System.out.println("Введите дату и время");
-                                String dateAndTime = scanner.nextLine();
+                                if (sessionController.getById(id).isPresent()) {
+                                    System.out.println("Введите дату и время");
+                                    String dateAndTime = scanner.nextLine();
 
-                                SessionModel sessionModel = new SessionModel(id, LocalDateTime.parse(dateAndTime));//retrscydtfyginuhomuj,ikpo.ssdvufi7gnohmpj,bgnhpmj,kpol
-                                sessionController.deleteById(id);
+                                    SessionModel sessionModel = new SessionModel(id, LocalDateTime.parse(dateAndTime));//retrscydtfyginuhomuj,ikpo.ssdvufi7gnohmpj,bgnhpmj,kpol
 
-                                sessionController.create(sessionModel);
+
+                                    sessionController.update(sessionModel);
+                                } else {
+                                    System.out.println("Записи с таким ID не существует");
+                                }
                             }
                             case 5 -> {
                                 running = false;
@@ -399,17 +416,21 @@ public class Main {
                                 System.out.println("Введите ID ответа пользователя");
                                 int id = scanner.nextInt();
 
-                                System.out.println("Введите ID ответа");
-                                int answerId = scanner.nextInt();
+                                if (userAnswerController.getById(id).isPresent()) {
+                                    System.out.println("Введите ID ответа");
+                                    int answerId = scanner.nextInt();
 
-                                System.out.println("Введите ID сессии");
-                                int sessionId = scanner.nextInt();
+                                    System.out.println("Введите ID сессии");
+                                    int sessionId = scanner.nextInt();
 
 
-                                UserAnswerModel userAnswerModel = new UserAnswerModel(id, answerId, sessionId);
-                                userAnswerController.deleteById(id);
+                                    UserAnswerModel userAnswerModel = new UserAnswerModel(id, answerId, sessionId);
 
-                                userAnswerController.create(userAnswerModel);
+
+                                    userAnswerController.update(userAnswerModel);
+                                } else {
+                                    System.out.println("Записи с таким ID не существует");
+                                }
                             }
                             case 5 -> {
                                 running = false;

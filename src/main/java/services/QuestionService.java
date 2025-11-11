@@ -33,6 +33,11 @@ public class QuestionService implements ServiceInterface<QuestionModel>{
     }
 
     @Override
+    public void update(QuestionModel entity) {
+        repository.update(entity);
+    }
+
+    @Override
     public Optional<QuestionModel> getById(int id) {
         return repository.getById(id);
     }

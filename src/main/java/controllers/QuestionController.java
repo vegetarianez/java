@@ -20,8 +20,13 @@ public class QuestionController implements ControllerInterface<QuestionModel> {
 
 
     @Override
-    public void create(QuestionModel answer) {
-        service.create(answer);
+    public void create(QuestionModel question) {
+        service.create(question);
+    }
+
+    @Override
+    public void update(QuestionModel question) {
+        service.update(question);
     }
 
     @Override

@@ -24,6 +24,11 @@ public class SessionRepository implements RepositoryInterface<SessionModel>{
     }
 
     @Override
+    public void update(SessionModel entity) {
+        table.getModels().put(entity.getId(), entity);
+    }
+
+    @Override
     public Optional<SessionModel> getById(int id) {
         return Optional.ofNullable(table.getModels().get(id));
     }

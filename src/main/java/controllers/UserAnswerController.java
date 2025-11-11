@@ -11,7 +11,6 @@ import java.util.Scanner;
 
 public class UserAnswerController implements ControllerInterface<UserAnswerModel> {
     private final UserAnswerService service;
-    private final Scanner scanner = new Scanner(System.in);
 
 
 
@@ -22,8 +21,13 @@ public class UserAnswerController implements ControllerInterface<UserAnswerModel
 
 
     @Override
-    public void create(UserAnswerModel answer) {
-        service.create(answer);
+    public void create(UserAnswerModel userAnswer) {
+        service.create(userAnswer);
+    }
+
+    @Override
+    public void update(UserAnswerModel userAnswer) {
+        service.update(userAnswer);
     }
 
     @Override

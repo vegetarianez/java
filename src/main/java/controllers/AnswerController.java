@@ -25,6 +25,11 @@ public class AnswerController implements ControllerInterface<AnswerModel>{
     }
 
     @Override
+    public void update(AnswerModel answer) {
+        service.update(answer);
+    }
+
+    @Override
     public Optional<AnswerModel> getById(int id) {
         return service.getById(id);
     }

@@ -24,6 +24,11 @@ public class QuestionRepository implements RepositoryInterface<QuestionModel>{
     }
 
     @Override
+    public void update(QuestionModel entity) {
+        table.getModels().put(entity.getId(), entity);
+    }
+
+    @Override
     public Optional<QuestionModel> getById(int id) {
         return Optional.ofNullable(table.getModels().get(id));
     }

@@ -27,8 +27,13 @@ public class SessionController implements ControllerInterface<SessionModel> {
 
 
     @Override
-    public void create(SessionModel answer) {
-        service.create(answer);
+    public void create(SessionModel session) {
+        service.create(session);
+    }
+
+    @Override
+    public void update(SessionModel session) {
+        service.update(session);
     }
 
     @Override

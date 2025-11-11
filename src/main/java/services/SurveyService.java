@@ -37,6 +37,11 @@ public class SurveyService implements ServiceInterface<SurveyModel>{
     }
 
     @Override
+    public void update(SurveyModel entity) {
+        repository.update(entity);
+    }
+
+    @Override
     public Optional<SurveyModel> getById(int id) {
         return repository.getById(id);
     }

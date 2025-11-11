@@ -20,6 +20,11 @@ public class SurveyRepository implements RepositoryInterface<SurveyModel>{
     }
 
     @Override
+    public void update(SurveyModel entity) {
+        table.getModels().put(entity.getId(), entity);
+    }
+
+    @Override
     public Optional<SurveyModel> getById(int id) {
         return Optional.ofNullable(table.getModels().get(id));
     }

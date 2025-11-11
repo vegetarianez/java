@@ -37,6 +37,11 @@ public class UserAnswerService implements ServiceInterface<UserAnswerModel> {
     }
 
     @Override
+    public void update(UserAnswerModel entity) {
+        repository.update(entity);
+    }
+
+    @Override
     public Optional<UserAnswerModel> getById(int id) {
         return repository.getById(id);
     }

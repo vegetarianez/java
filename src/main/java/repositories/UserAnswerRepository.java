@@ -23,6 +23,11 @@ public class UserAnswerRepository implements RepositoryInterface<UserAnswerModel
     }
 
     @Override
+    public void update(UserAnswerModel entity) {
+        table.getModels().put(entity.getId(), entity);
+    }
+
+    @Override
     public Optional<UserAnswerModel> getById(int id) {
         return Optional.ofNullable(table.getModels().get(id));
     }

@@ -37,6 +37,11 @@ public class SessionService implements ServiceInterface<SessionModel>{
     }
 
     @Override
+    public void update(SessionModel entity) {
+        repository.update(entity);
+    }
+
+    @Override
     public Optional<SessionModel> getById(int id) {
         return repository.getById(id);
     }
