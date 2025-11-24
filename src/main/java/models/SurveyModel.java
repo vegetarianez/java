@@ -31,4 +31,43 @@ public class SurveyModel {
     public int getId() {
         return id;
     }
+
+    public SurveyModel() {
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getSessionId() {
+        return sessionId;
+    }
+
+    public void setSessionId(Integer sessionId) {
+        this.sessionId = sessionId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public LocalDateTime getDateAndTimeOfCreation() {
+        return dateAndTimeOfCreation;
+    }
+
+    public void setDateAndTimeOfCreation(LocalDateTime dateAndTimeOfCreation) {
+        this.dateAndTimeOfCreation = dateAndTimeOfCreation;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

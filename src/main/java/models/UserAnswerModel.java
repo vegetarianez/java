@@ -14,6 +14,29 @@ public class UserAnswerModel {
         this.sessionId = sessionId;
     }
 
+    public UserAnswerModel() {
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getAnswerId() {
+        return answerId;
+    }
+
+    public void setAnswerId(Integer answerId) {
+        this.answerId = answerId;
+    }
+
+    public Integer getSessionId() {
+        return sessionId;
+    }
+
+    public void setSessionId(Integer sessionId) {
+        this.sessionId = sessionId;
+    }
+
     @Override
     public String toString() {
         return " id=" + id.toString() +

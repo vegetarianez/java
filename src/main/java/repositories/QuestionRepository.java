@@ -4,6 +4,7 @@ import database.tables.QuestionTable;
 import models.AnswerModel;
 import models.QuestionModel;
 
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -11,67 +12,101 @@ import java.util.Optional;
 
 
 public class QuestionRepository implements RepositoryInterface<QuestionModel>{
-    private final QuestionTable table;
+    private final Connection connection;
 
 
-    public QuestionRepository(QuestionTable table) {
-        this.table = table;
+    public QuestionRepository(Connection connection) {
+        this.connection = connection;
     }
 
     @Override
-    public void create(QuestionModel entity) {
-        table.getModels().put(entity.getId(), entity);
+    public void create(QuestionModel question) {
+        String sql = "INSERT INTO \"Question\"(survey_id, text, type, index) VALUES (?, ?, ?, ?)";
+        try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            statement.setInt(1, question.getSurveyId());
+            statement.setString(2, question.getText());
+            statement.setString(3, question.getType());
+            statement.setInt(4, question.getIndexNumber());
+
+
+            statement.executeUpdate();
+
+            try (ResultSet rs = statement.getGeneratedKeys()) {
+                if (rs.next()) {
+                    question.setId(rs.getInt(1));
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Ошибка добавления вопроса", e);
+        }
     }
 
     @Override
-    public void update(QuestionModel entity) {
-        table.getModels().put(entity.getId(), entity);
+    public void update(QuestionModel question) {
+        String sql = "UPDATE \"Question\" SET survey_id=?, text=?, type=?, index=? WHERE id=?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, question.getSurveyId());
+            statement.setString(2, question.getText());
+            statement.setString(3, question.getType());
+            statement.setInt(4, question.getIndexNumber());
+            statement.setInt(5, question.getId());
+
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Ошибка обновления вопроса", e);
+        }
     }
 
     @Override
     public Optional<QuestionModel> getById(int id) {
-        return Optional.ofNullable(table.getModels().get(id));
+        String sql = "SELECT * FROM \"Question\" WHERE id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, id);
+            try (ResultSet rs = statement.executeQuery()) {
+                if (rs.next()) {
+                    return Optional.of(mapRow(rs));
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Ошибка поиска по id", e);
+        }
+        return Optional.empty();
     }
 
     @Override
     public List<QuestionModel> getAll() {
-        return new ArrayList<>(table.getModels().values());
+        String sql = "SELECT * FROM \"Question\"";
+        List<QuestionModel> questionModels = new ArrayList<>();
+        try (Statement statement = connection.createStatement();
+             ResultSet rs = statement.executeQuery(sql)) {
+            while (rs.next()) {
+                questionModels.add(mapRow(rs));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Ошибка получения списка вопросов", e);
+        }
+        return questionModels;
     }
 
     @Override
     public void deleteById(int id) {
-        table.getModels().remove(id);
+        String sql = "DELETE FROM \"Question\" WHERE id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, id);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Ошибка удаления вопроса", e);
+        }
     }
 
+    private QuestionModel mapRow(ResultSet rs) throws SQLException {
+        QuestionModel questionModel = new QuestionModel();
+        questionModel.setId(rs.getInt("id"));
+        questionModel.setSurveyId(rs.getInt("survey_id"));
+        questionModel.setText(rs.getString("text"));
+        questionModel.setType(rs.getString("type"));
+        questionModel.setIndexNumber(rs.getInt("index"));
 
-//    public QuestionModel getQuestionModelById(Integer id) {
-//        return questions.get(id);
-//    }
-//
-//    public QuestionModel addQuestion(QuestionModel questionModel) {
-//        QuestionModel question = new QuestionModel(increment++, questionModel.getSurveyId(), questionModel.getText(), questionModel.getType(), questionModel.getIndexNumber());
-//        questions.add(question);
-//        return questionModel;
-//    }
-//
-//    public boolean deleteQuestionById(Integer id) {
-//        for (QuestionModel questionModel : questions) {
-//            if (Objects.equals(questionModel.getId(), id)) {
-//                questions.remove(questionModel);
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
-//
-//    public QuestionModel updateQuestion(QuestionModel questionModel) {
-//        for (QuestionModel questionModel1 : questions) {
-//            if (questionModel1.getId().equals(questionModel.getId())) {
-//                questions.remove(questionModel1);
-//                return questionModel;
-//            }
-//        }
-//        return null;
-//    }
-
+        return questionModel;
+    }
 }

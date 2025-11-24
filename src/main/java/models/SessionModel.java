@@ -22,4 +22,20 @@ public class SessionModel {
     public int getId() {
         return id;
     }
+
+    public SessionModel() {
+
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getDateAndTime() {
+        return dateAndTime;
+    }
+
+    public void setDateAndTime(LocalDateTime dateAndTime) {
+        this.dateAndTime = dateAndTime;
+    }
 }

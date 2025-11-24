@@ -5,21 +5,30 @@ import models.*;
 import repositories.*;
 import services.*;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.Scanner;
 
 
 public class Main {
-    public static void main(String[] args) {
-        Database database = new Database();
-        database.generateAll();
+    public static void main(String[] args) throws SQLException {
+        String url = "jdbc:postgresql://localhost:5432/anonQuestions";
+        String user = "postgres";
+        String password = "nik200555";
+
+        Connection connection = DriverManager.getConnection(url, user, password);
+
+
         int idCounter = 1;
 
-        AnswerController answerController = new AnswerController(new AnswerService(new AnswerRepository(database.getAnswerTable())));
-        QuestionController questionController = new QuestionController(new QuestionService(new QuestionRepository(database.getQuestionTable())));
-        SessionController sessionController = new SessionController(new SessionService(new SessionRepository(database.getSessionTable())));
-        SurveyController surveyController = new SurveyController(new SurveyService(new SurveyRepository(database.getSurveyTable())));
-        UserAnswerController userAnswerController = new UserAnswerController(new UserAnswerService(new UserAnswerRepository(database.getUserAnswerTable())));
+
+        AnswerController answerController = new AnswerController(new AnswerService(new AnswerRepository(connection)));
+        QuestionController questionController = new QuestionController(new QuestionService(new QuestionRepository(connection)));
+        SessionController sessionController = new SessionController(new SessionService(new SessionRepository(connection)));
+        SurveyController surveyController = new SurveyController(new SurveyService(new SurveyRepository(connection)));
+        UserAnswerController userAnswerController = new UserAnswerController(new UserAnswerService(new UserAnswerRepository(connection)));
 
         Scanner scanner = new Scanner(System.in);
 
@@ -65,15 +74,8 @@ public class Main {
 
 
                                 SurveyModel surveyModel;
-                                while (true) {
-                                    if (surveyController.getById(idCounter).isEmpty()) {
-                                        surveyModel = new SurveyModel(idCounter, sessionId, name, LocalDateTime.parse(dateAndTimeOfCreation), description);
-                                        idCounter = 1;
-                                        break;
-                                    } else {
-                                        idCounter++;
-                                    }
-                                }
+                                surveyModel = new SurveyModel(0, sessionId, name, LocalDateTime.parse(dateAndTimeOfCreation), description);
+
 
                                 surveyController.create(surveyModel);
                                 System.out.println("Создан опрос: ");
@@ -153,15 +155,8 @@ public class Main {
 
 
                                 QuestionModel questionModel;
-                                while (true) {
-                                    if (questionController.getById(idCounter).isEmpty()) {
-                                        questionModel = new QuestionModel(idCounter, surveyId, text, type, indexNumber);
-                                        idCounter = 1;
-                                        break;
-                                    } else {
-                                        idCounter++;
-                                    }
-                                }
+                                questionModel = new QuestionModel(0, surveyId, text, type, indexNumber);
+
 
                                 questionController.create(questionModel);
                                 System.out.println("Создан вопрос: ");
@@ -243,15 +238,8 @@ public class Main {
 
 
                                 AnswerModel answerModel;
-                                while (true) {
-                                    if (answerController.getById(idCounter).isEmpty()) {
-                                        answerModel = new AnswerModel(idCounter, questionId, text, indexNumber);
-                                        idCounter = 1;
-                                        break;
-                                    } else {
-                                        idCounter++;
-                                    }
-                                }
+                                answerModel = new AnswerModel(0, questionId, text, indexNumber);
+
 
                                 answerController.create(answerModel);
                                 System.out.println("Создан вопрос: ");
@@ -319,15 +307,8 @@ public class Main {
 
 
                                 SessionModel sessionModel;
-                                while (true) {
-                                    if (sessionController.getById(idCounter).isEmpty()) {
-                                        sessionModel = new SessionModel(idCounter, LocalDateTime.parse(dateAndTime));
-                                        idCounter = 1;
-                                        break;
-                                    } else {
-                                        idCounter++;
-                                    }
-                                }
+                                sessionModel = new SessionModel(0, LocalDateTime.parse(dateAndTime));
+
 
                                 sessionController.create(sessionModel);
                                 System.out.println("Создана сессия: ");
@@ -388,15 +369,8 @@ public class Main {
 
 
                                 UserAnswerModel userAnswerModel;
-                                while (true) {
-                                    if (userAnswerController.getById(idCounter).isEmpty()) {
-                                        userAnswerModel = new UserAnswerModel(idCounter, answerId, sessionId);
-                                        idCounter = 1;
-                                        break;
-                                    } else {
-                                        idCounter++;
-                                    }
-                                }
+                                userAnswerModel = new UserAnswerModel(0, answerId, sessionId);
+
 
                                 userAnswerController.create(userAnswerModel);
                                 System.out.println("Создана сессия: ");

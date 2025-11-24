@@ -1,91 +1,104 @@
 package repositories;
 
 
-import database.tables.SurveyTable;
-import database.tables.UserAnswerTable;
-import models.SurveyModel;
 import models.UserAnswerModel;
 
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 public class UserAnswerRepository implements RepositoryInterface<UserAnswerModel> {
-    private final UserAnswerTable table;
+    private final Connection connection;
 
-    public UserAnswerRepository(UserAnswerTable table) {
-        this.table = table;
+
+    public UserAnswerRepository(Connection connection) {
+        this.connection = connection;
     }
 
     @Override
-    public void create(UserAnswerModel entity) {
-        table.getModels().put(entity.getId(), entity);
+    public void create(UserAnswerModel userAnswer) {
+        String sql = "INSERT INTO \"User_answers\"(answer_id, session_id) VALUES (?, ?)";
+        try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            statement.setInt(1, userAnswer.getAnswerId());
+            statement.setInt(2, userAnswer.getSessionId());
+
+            statement.executeUpdate();
+
+            try (ResultSet rs = statement.getGeneratedKeys()) {
+                if (rs.next()) {
+                    userAnswer.setId(rs.getInt(1));
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Ошибка добавления ответа пользователя", e);
+        }
     }
 
     @Override
-    public void update(UserAnswerModel entity) {
-        table.getModels().put(entity.getId(), entity);
+    public void update(UserAnswerModel userAnswer) {
+        String sql = "UPDATE \"User_answers\" SET answer_id=?, session_id=? WHERE id=?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, userAnswer.getAnswerId());
+            statement.setInt(2, userAnswer.getSessionId());
+            statement.setInt(3, userAnswer.getId());
+
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Ошибка обновления ответа пользователя", e);
+        }
     }
 
     @Override
     public Optional<UserAnswerModel> getById(int id) {
-        return Optional.ofNullable(table.getModels().get(id));
+        String sql = "SELECT * FROM \"User_answers\" WHERE id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, id);
+            try (ResultSet rs = statement.executeQuery()) {
+                if (rs.next()) {
+                    return Optional.of(mapRow(rs));
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Ошибка поиска по id", e);
+        }
+        return Optional.empty();
     }
 
     @Override
     public List<UserAnswerModel> getAll() {
-        return new ArrayList<>(table.getModels().values());
+        String sql = "SELECT * FROM \"User_answers\"";
+        List<UserAnswerModel> userAnswerModels = new ArrayList<>();
+        try (Statement statement = connection.createStatement();
+             ResultSet rs = statement.executeQuery(sql)) {
+            while (rs.next()) {
+                userAnswerModels.add(mapRow(rs));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Ошибка получения списка ответов пользователей", e);
+        }
+        return userAnswerModels;
     }
 
     @Override
     public void deleteById(int id) {
-        table.getModels().remove(id);
+        String sql = "DELETE FROM \"User_answers\" WHERE id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, id);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Ошибка удаления ответа пользователя", e);
+        }
     }
 
+    private UserAnswerModel mapRow(ResultSet rs) throws SQLException {
+        UserAnswerModel userAnswerModel = new UserAnswerModel();
+        userAnswerModel.setId(rs.getInt("id"));
+        userAnswerModel.setAnswerId(rs.getInt("answer_id"));
+        userAnswerModel.setSessionId(rs.getInt("session_id"));
 
 
 
-
-
-//    private ArrayList<UserAnswerModel> userAnswers = new ArrayList<>();
-//    private Integer increment = 1;
-//
-//    public UserAnswerRepository() {
-//    }
-//
-//    public UserAnswerModel getUserAnswerModelById(Integer id) {
-//        for (UserAnswerModel userAnswer : userAnswers) {
-//            if (Objects.equals(userAnswer.getId(), id)) {
-//                return userAnswer;
-//            }
-//        }
-//        return null;
-//    }
-//
-//    public UserAnswerModel addUserAnswer(UserAnswerModel userAnswerModel) {
-//        UserAnswerModel userAnswer = new UserAnswerModel(increment++, userAnswerModel.getAnswerId(), userAnswerModel.getSessionId());
-//        userAnswers.add(userAnswer);
-//        return userAnswerModel;
-//    }
-//
-//    public boolean deleteUserAnswerById(Integer id) {
-//        for (UserAnswerModel userAnswerModel : userAnswers) {
-//            if (Objects.equals(userAnswerModel.getId(), id)) {
-//                userAnswers.remove(userAnswerModel);
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
-//
-//    public UserAnswerModel updateUserAnswer(UserAnswerModel userAnswerModel) {
-//        for (UserAnswerModel userAnswer : userAnswers) {
-//            if (userAnswer.getId().equals(userAnswerModel.getId())) {
-//                userAnswers.remove(userAnswer);
-//                userAnswers.add(userAnswerModel);
-//                return userAnswerModel;
-//            }
-//        }
-//        return null;
-//    }
+        return userAnswerModel;
+    }
 }

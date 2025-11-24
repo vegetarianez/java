@@ -15,6 +15,10 @@ public class AnswerModel {
         this.indexNumber = indexNumber;
     }
 
+    public AnswerModel() {
+
+    }
+
     @Override
     public String toString() {
         return " id=" + id.toString() +
@@ -25,5 +29,33 @@ public class AnswerModel {
 
     public int getId() {
         return id;
+    }
+
+    public Integer getQuestionId() {
+        return questionId;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public Integer getIndexNumber() {
+        return indexNumber;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setQuestionId(Integer questionId) {
+        this.questionId = questionId;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public void setIndexNumber(Integer indexNumber) {
+        this.indexNumber = indexNumber;
     }
 }
