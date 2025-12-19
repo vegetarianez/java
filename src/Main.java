@@ -21,7 +21,6 @@ public class Main {
         Connection connection = DriverManager.getConnection(url, user, password);
 
 
-        int idCounter = 1;
 
 
         AnswerController answerController = new AnswerController(new AnswerService(new AnswerRepository(connection)));

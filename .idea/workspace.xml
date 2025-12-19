@@ -4,21 +4,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77c30501-dd32-448e-9e6a-18fc4e185a69" name="Changes" comment="added update function">
+    <list default="true" id="77c30501-dd32-448e-9e6a-18fc4e185a69" name="Changes" comment="redo repositories, added  connection to database">
+      <change afterPath="$PROJECT_DIR$/src/main/java/dbconnect/DatabaseConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlets/AnswerServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlets/QuestionServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlets/SessionServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlets/SurveyServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlets/UserAnswerServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/webapp/WEB-INF/answers.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/webapp/WEB-INF/web.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/models/AnswerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/AnswerModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/QuestionModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/QuestionModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/SessionModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/SessionModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/SurveyModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/SurveyModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/UserAnswerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/UserAnswerModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/AnswerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/AnswerRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/QuestionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/QuestionRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/SessionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/SessionRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/SurveyRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/SurveyRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/UserAnswerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/UserAnswerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/QuestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/QuestionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/SurveyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/SurveyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/UserAnswerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/UserAnswerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/AnswerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/AnswerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/ControllerInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/ControllerInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/QuestionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/QuestionController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/SessionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/SessionController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/SurveyController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/SurveyController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/UserAnswerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/UserAnswerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/database/Database.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/database/Database.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/database/tables/AnswerTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/database/tables/AnswerTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/database/tables/QuestionTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/database/tables/QuestionTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/database/tables/SessionTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/database/tables/SessionTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/database/tables/SurveyTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/database/tables/SurveyTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/database/tables/UserAnswerTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/database/tables/UserAnswerTable.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/models/AnswerModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/AnswerModel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/models/QuestionModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/QuestionModel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/models/SessionModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/SessionModel.class" afterDir="false" />
@@ -26,9 +40,16 @@
       <change beforePath="$PROJECT_DIR$/target/classes/models/UserAnswerModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/UserAnswerModel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/repositories/AnswerRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repositories/AnswerRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/repositories/QuestionRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repositories/QuestionRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/repositories/RepositoryInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repositories/RepositoryInterface.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/repositories/SessionRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repositories/SessionRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/repositories/SurveyRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repositories/SurveyRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/repositories/UserAnswerRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repositories/UserAnswerRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/services/AnswerService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/AnswerService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/services/QuestionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/QuestionService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/services/ServiceInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/ServiceInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/services/SessionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/SessionService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/services/SurveyService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/SurveyService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/services/UserAnswerService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/UserAnswerService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +67,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="customMavenHome" value="C:\apache-maven-4.0.0-beta-5" />
+        <option name="mavenHomeTypeForPersistence" value="CUSTOM" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -57,16 +86,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Nick/IdeaProjects/laba10-main&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
@@ -119,7 +149,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762871467295</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="redo repositories, added  connection to database">
+      <option name="closed" value="true" />
+      <created>1763997359613</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1763997359613</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -136,6 +174,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="redo att 1" />
     <MESSAGE value="added update function" />
-    <option name="LAST_COMMIT_MESSAGE" value="added update function" />
+    <MESSAGE value="redo repositories, added  connection to database" />
+    <option name="LAST_COMMIT_MESSAGE" value="redo repositories, added  connection to database" />
   </component>
 </project>

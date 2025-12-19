@@ -1,7 +1,6 @@
 package models;
 
 
-
 public class AnswerModel {
     private Integer id;
     private Integer questionId;

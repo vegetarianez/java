@@ -45,35 +45,4 @@ public class UserAnswerService implements ServiceInterface<UserAnswerModel> {
     public Optional<UserAnswerModel> getById(int id) {
         return repository.getById(id);
     }
-
-
-
-
-
-
-
-//    private final UserAnswerRepository userAnswerRepository;
-//
-//    public UserAnswerModel createUserAnswer(int answerId, int sessionId) {
-//        if (answerId < 0 || sessionId < 0) {
-//            throw new IllegalArgumentException("ID не могут быть отрицательными");
-//        }
-//        return userAnswerRepository.addUserAnswer(new UserAnswerModel((int) userAnswerRepository.getUserAnswers().stream().count() + 1, answerId, sessionId));
-//    }
-//
-//    public List<UserAnswerModel> getAllUserAnswers() {
-//        return userAnswerRepository.getUserAnswers();
-//    }
-//
-//    public UserAnswerModel getUserAnswerById(int id) {
-//        return userAnswerRepository.getUserAnswerModelById(id);
-//    }
-//
-//    public boolean deleteUserAnswer(int id) {
-//        return userAnswerRepository.deleteUserAnswerById(id);
-//    }
-//
-//    public UserAnswerModel updateUserAnswer(int id, int answerId, int sessionId) {
-//        return userAnswerRepository.updateUserAnswer(new UserAnswerModel(id, answerId, sessionId));
-//    }
 }
